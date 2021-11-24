@@ -17,10 +17,10 @@ function M.globals()
     g.loaded_python_provider = 0  -- Disable Python2 support
     g.loaded_perl_provider = 0  -- Disable perl provider
     g.loaded_ruby_provider = 0  -- Disable ruby provider
-    g.loaded_node_provider = 0  -- Disable node provider
+    -- g.loaded_node_provider = 0  -- Disable node provider
     -- g.python3_host_prog=vim.fn.exepath('python3')
-    -- g.python3_host_prog='/usr/bin/python3'
-    g.python3_host_prog='/opt/homebrew/bin/python3'
+    g.python3_host_prog='/usr/bin/python3'
+    -- g.python3_host_prog='/opt/homebrew/bin/python3'
     -- g.python3_host_prog='$HOME/.pyenv/versions/nvim/bin/python3'
 end
 

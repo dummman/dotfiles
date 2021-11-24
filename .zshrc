@@ -85,6 +85,7 @@ plugins=(
 	colored-man-pages 
 	cp 
 	fzf
+    gh
 	git 
 	pip
     poetry
@@ -132,10 +133,12 @@ alias zshcfg="nvim ~/.zshrc"
 # export CLICOLOR=1
 # export t_Co=256
 # Python path settings
-# export PATH="$PATH:/Users/daniel/.local/bin"
+# export PATH="$PATH:$HOME/.local/bin"
 # export PATH="$PATH:/Users/daniel/Library/Python/3.9/bin"
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+export FPATH="$FPATH:/opt/homebrew/share/zsh/site-functions"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

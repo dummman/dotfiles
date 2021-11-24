@@ -3,7 +3,30 @@ local conf = require 'nvim-treesitter.configs'
 
 function M.setup()
     conf.setup {
-        ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        -- ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        ensure_installed = {
+            "c",
+            "cpp",
+            "java",
+            "rust",
+            "python",
+            "lua",
+            "bash",
+            "html",
+            "typescript",
+            "javascript",
+            "dockerfile",
+            "vim",
+            "r",
+            "regex",
+            "json",
+            "yaml",
+            "latex",
+            "bibtex",
+            "comment",
+            "cmake",
+            "llvm",
+        }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
         highlight = {
             enable = true,              -- false will disable the whole extension
         },
