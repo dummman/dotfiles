@@ -38,13 +38,13 @@ function M.setup()
 	--   },
 	--   capabilities = capabilities,
 	-- }
-	-- lsp.pyright.setup{
-	--     on_attach = on_attach,
-	--     flags = {
-	--         debounce_text_changes = 150,
-	--     },
-	--     capabilities = capabilities,
-	-- }
+	-- lsp.pyright.setup({
+	-- 	on_attach = on_attach,
+	-- 	flags = {
+	-- 		debounce_text_changes = 150,
+	-- 	},
+	-- 	capabilities = capabilities,
+	-- })
 
 	lsp.rust_analyzer.setup({
 		on_attach = on_attach,
@@ -74,9 +74,25 @@ function M.setup()
 	--     },
 	--     capabilities = capabilities,
 	-- }
+	-- lsp.ccls.setup({
+	-- 	init_options = {
+	-- 		compilationDatabaseDirectory = "build",
+	-- 		index = {
+	-- 			threads = 0,
+	-- 		},
+	-- 		clang = {
+	-- 			excludeArgs = { "-frounding-math" },
+	-- 		},
+	-- 		cache = {
+	-- 			directory = ".ccls-cache",
+	-- 		},
+	-- 	},
+	-- })
 end
 
+require("config.clangd-lsp")
 require("config.null-ls")
+
 -- Make runtime files discoverable to the server.
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")

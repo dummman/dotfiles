@@ -212,6 +212,17 @@ function M.plugins()
 		{ "x", "<leader>sr", ':lua require("sniprun").run("v")<CR>' },
 		{ "n", "<leader>ss", ':lua require("sniprun").reset()<CR>' },
 		{ "n", "<leader>sc", ':lua require("sniprun.display").close()<CR>' },
+
+		-- glow
+		{ "n", "<leader>sg", ":Glow<CR>" },
+
+		-- zk
+		{ "n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>" },
+		{ "n", "<leader>zj", "<Cmd>ZkNew { dir = '$ZK_NOTEBOOK_DIR/journal' }<CR>" },
+		{ "n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>" },
+		{ "n", "<leader>zt", "<Cmd>ZkTags<CR>" },
+		{ "n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>" },
+		{ "v", "<leader>zf", ":'<,'>ZkMatch<CR>" },
 	}
 	M.maps(maps, opts)
 end
@@ -258,7 +269,7 @@ function M.lsp()
 		{ "n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>" },
 		{ "n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>" },
 		-- {'n', '<space>r', ':lua vim.lsp.buf.rename()<CR>'},
-		{ "n", "<space>f", ":lua vim.lsp.buf.formatting_sync()<CR>" },
+		{ "n", "<space>f", ":lua vim.lsp.buf.formatting()<CR>" },
 		{ "x", "<space>f", ":lua vim.lsp.buf.range_formatting()<CR>" },
 		{ "n", "<space>wa", ":lua vim.lsp.buf.add_workspace_folder()<CR>" },
 		{ "n", "<space>wr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>" },

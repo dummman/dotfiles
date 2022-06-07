@@ -87,6 +87,7 @@ plugins=(
 	fzf
     gh
 	git 
+    npm
 	pip
     poetry
 	python 

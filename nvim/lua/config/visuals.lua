@@ -1,8 +1,9 @@
+local colorscheme = "default"
 if vim.fn.has("termguicolors") == 1 then
 	-- print("we have termguicolors")
 	vim.opt.termguicolors = true
 	-- local colorscheme = "PaperColor"
-	local colorscheme = "tokyonight"
+	colorscheme = "tokyonight"
 	vim.g.tokyonight_style = "night"
 	vim.g.tokyonight_italic_functions = true
 	-- vim.g.tokyonight_italic_variables = true
@@ -19,35 +20,33 @@ else
 end
 vim.o.background = "dark"
 
--- require('nvim-gps').setup{}
--- local gps = require("nvim-gps")
--- require('tabline').setup {enable = false}
+require("nvim-gps").setup({})
+local gps = require("nvim-gps")
+require("tabline").setup({ enable = false })
 -- require('tabline').setup {enable = true}
--- vim.opt.laststatus     = 2
--- vim.opt.statusline:append()
--- require('lualine').setup{
---     options = {
---         theme = colorscheme
---     },
---     extensions = {
---         'quickfix',
---         'fugitive',
---     },
---     sections = {
---         lualine_c = {
---             { gps.get_location, condition = gps.is_available },
---             -- { require('auto-session-library').current_session_name}
---         }
---     },
---     tabline = {
---         lualine_a = {},
---         lualine_b = {},
---         lualine_c = { require'tabline'.tabline_buffers },
---         lualine_x = { require'tabline'.tabline_tabs },
---         lualine_y = {},
---         lualine_z = {},
---     },
--- }
+require("lualine").setup({
+	options = {
+		theme = colorscheme,
+	},
+	extensions = {
+		"quickfix",
+		"fugitive",
+	},
+	sections = {
+		lualine_c = {
+			{ gps.get_location, condition = gps.is_available },
+			-- { require('auto-session-library').current_session_name}
+		},
+	},
+	tabline = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { require("tabline").tabline_buffers },
+		lualine_x = { require("tabline").tabline_tabs },
+		lualine_y = {},
+		lualine_z = {},
+	},
+})
 -- require("neoscroll").setup({
 --     easing_function = "quadratic"
 -- })

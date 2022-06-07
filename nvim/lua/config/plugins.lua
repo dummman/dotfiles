@@ -13,6 +13,7 @@ require("paq")({
 	"nvim-lua/plenary.nvim",
 	"neovim/nvim-lspconfig", -- Mind the semi-colons
 	"ray-x/lsp_signature.nvim",
+    "p00f/clangd_extensions.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
 	"ThePrimeagen/refactoring.nvim",
 	-- {"junegunn/fzf", run = fn["fzf#install"]};
@@ -61,6 +62,7 @@ require("paq")({
 	"Shatur/neovim-session-manager",
 	-- "svermeulen/vimpeccable";
 	-- "famiu/nvim-reload";
+	"mickael-menu/zk-nvim",
 
 	-- vimscript
 	"andymass/vim-matchup",
@@ -81,6 +83,7 @@ require("paq")({
 	"folke/lsp-colors.nvim",
 	"p00f/nvim-ts-rainbow",
 	"SmiteshP/nvim-gps",
+    "ellisonleao/glow.nvim",
 	-- "simrat39/symbols-outline.nvim";
 	-- "karb94/neoscroll.nvim";
 })
@@ -142,6 +145,7 @@ require("refactoring").setup({})
 --     path_display={'shorten'},
 -- }
 require("session_manager").setup({})
+require("zk").setup({})
 
 -- local vimp = require('vimp')
 -- -- r = reload vimrc

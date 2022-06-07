@@ -3,6 +3,7 @@ local opt = vim.opt
 local g = vim.g
 
 function M.settings()
+    -- filetype plugin on
 	M.globals()
 	M.options()
 	M.window_options()
