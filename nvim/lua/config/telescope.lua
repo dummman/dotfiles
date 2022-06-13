@@ -55,8 +55,8 @@ require("telescope").load_extension("fzf")
 -- require('telescope').load_extension('projects')
 -- require('telescope').load_extension('project')
 require("telescope").load_extension("repo")
-require("telescope").load_extension("dap")
-require("telescope").load_extension("sessions")
+-- require("telescope").load_extension("dap")
+-- require("telescope").load_extension("sessions")
 -- require('telescope').load_extension('session-lens')
 
 local M = {}

@@ -19,8 +19,6 @@ function M.mappings()
 	M.div_silent()
 	M.div_nonoremap()
 	M.plugins()
-	-- M.make()
-	M.nvim_dap()
 	M.lsp()
 end
 
@@ -63,8 +61,18 @@ function M.movements()
 		{ "n", "]]", "]]zz" },
 		{ "n", "[]", "[]zz" },
 		{ "n", "][", "][zz" },
+		{ "n", "n", "nzzzv" },
+		{ "n", "N", "Nzzzv" },
+		{ "n", "#", "#zz" },
+		{ "n", "*", "*zz" },
 		{ "i", "<c-]>", "<c-o>$" },
 		{ "i", "<c-[>", "<c-o>I" },
+		{ "", "<c-u>", "<c-u>M" },
+		{ "", "<c-d>", "<c-d>M" },
+		{ "n", "<c-j>", ":move .+1<CR>==" },
+		{ "n", "<c-k>", ":move .-2<CR>==" },
+		{ "v", "<c-j>", ":move '>+1<CR>gv=gv" },
+		{ "v", "<c-k>", ":move '<-2<CR>gv=gv" },
 		-- window resizing
 		{ "n", "<left>", "<c-w>>" },
 		{ "n", "<right>", "<c-w><" },
@@ -78,8 +86,8 @@ function M.div()
 	local opts = { nowait = true, noremap = true, silent = false }
 	local maps = {
 		{ "", "<leader>c", '"+y' },
-		{ "i", "<C-u>", "<Esc>viwUea" }, -- make uppercase
-		{ "i", "<C-t>", "<Esc>b~lea" }, -- make titlecase
+		-- { "i", "<C-u>", "<Esc>viwUea" }, -- make uppercase
+		-- { "i", "<C-t>", "<Esc>b~lea" }, -- make titlecase
 		{ "i", "<C-w>", "<C-g>u<C-w>" },
 		{ "n", "<leader><space>", ":noh<CR>" },
 		{ "n", "<leader>o", "m`o<Esc>``" },
@@ -93,6 +101,10 @@ function M.div()
 		{ "n", "<leader>p", "m`o<ESC>p``" }, -- Paste non-linewise text above or below current cursor
 		{ "n", "<leader>P", "m`O<ESC>p``" },
 		{ "n", "U", ":syntax sync fromstart<cr>:redraw!<cr>" }, -- Unfuck my screen
+		-- { "n", "<leader>r", ":source %MYVIMRC<cr>:Reloaded!<cr>" }, -- Reload vimrc
+		{ "n", "<C-s>", ":w<cr>:echo 'Saved!'<cr>" }, -- Save
+		{ "i", "<C-s>", "<ESC>:w<cr>:echo 'Saved!'<cr>i" }, -- Save
+		-- { "n", "<leader>d", ":read !date +'\%B \%-d, \%Y'<cr>" }, -- Save
 		-- {'n', '<leader>l', ':set list!<CR>'},
 		-- {'i', '<leader>l', '<C-o>:set list!<CR>'},
 		-- {'c', '<leader>l', '<C-c>:set list!<CR>'},
@@ -180,7 +192,6 @@ function M.plugins()
 		{ "n", "<leader>fp", ':lua require("telescope").extensions.repo.list{}<CR>' },
 		{ "n", "<leader>fq", ':lua require("telescope.builtin").man_pages()<CR>' },
 		-- {'n', '<leader>fs', ':lua require("session-lens").search_session()<CR>'},
-		{ "n", "<leader>fs", ":Telescope sessions<CR>" },
 		-- {'n', '<leader>ft', ':TodoTelescope<CR>'},
 		{ "n", "<leader>fv", ':lua require("telescope.builtin").vim_options()<CR>' },
 		-- neogen
@@ -205,20 +216,12 @@ function M.plugins()
 		{ "n", "X", "D" },
 		-- todo-comments.nvim
 
-		-- snip
-		{ "n", "<leader>sf", ":%SnipRun" },
-		{ "n", "<leader>sr", ':lua require("sniprun").run()<CR>' },
-		{ "n", "<leader>r", ':lua require("sniprun").run("n")<CR>' },
-		{ "x", "<leader>sr", ':lua require("sniprun").run("v")<CR>' },
-		{ "n", "<leader>ss", ':lua require("sniprun").reset()<CR>' },
-		{ "n", "<leader>sc", ':lua require("sniprun.display").close()<CR>' },
-
 		-- glow
 		{ "n", "<leader>sg", ":Glow<CR>" },
 
 		-- zk
 		{ "n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>" },
-		{ "n", "<leader>zj", "<Cmd>ZkNew { dir = '$ZK_NOTEBOOK_DIR/journal' }<CR>" },
+		{ "n", "<leader>zj", "<Cmd>ZkNew { dir = 'journal'}<CR>" },
 		{ "n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>" },
 		{ "n", "<leader>zt", "<Cmd>ZkTags<CR>" },
 		{ "n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>" },
@@ -230,11 +233,6 @@ end
 function M.div_nonoremap()
 	local opts = { nowait = true, noremap = false, silent = false }
 	local maps = {
-		--  nvim-miniyank
-		-- {'', 'p', '<Plug>(miniyank-autoput)'},
-		-- {'', 'P', '<Plug>(miniyank-autoPut)'},
-		-- {'', '<leader>n', '<Plug>(miniyank-cycle)'},
-		-- {'', '<leader>N', '<Plug>(miniyank-cycleback)'},
 		--  Yoink
 		{ "n", "y", "<Plug>(YoinkYankPreserveCursorPosition)" },
 		{ "x", "y", "<Plug>(YoinkYankPreserveCursorPosition)" },
@@ -276,24 +274,6 @@ function M.lsp()
 		{ "n", "<space>wl", ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>" },
 		{ "n", "<space>ai", ":!/Users/daniel/Library/Python/3.8/bin/autoimport %<CR>" },
 		-- {'n', 'gr', ':lua vim.lsp.buf.references()<CR>'},
-	}
-	M.maps(maps, opts)
-end
-
-function M.nvim_dap()
-	local opts = { nowait = true, noremap = true, silent = true }
-	local maps = {
-		{ "n", "<leader>db", ':lua require("dap").toggle_breakpoint()<CR>' },
-		{ "n", "<leader>dB", ':lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>' },
-		-- {'n', '<leader>lp', ':lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>'},
-		{ "n", "<F7>", ':lua require("dap").step_over()<CR>' },
-		{ "n", "<F8>", ':lua require("dap").step_into()<CR>' },
-		{ "n", "<F9>", ':lua require("dap").continue()<CR>' },
-		{ "n", "<F10>", ':lua require("dap").step_out()<CR>' },
-		{ "n", "<leader>dr", ':lua require("dap").repl.open()<CR>' },
-		{ "n", "<leader>dl", ':lua require("dap").repl.run_last()<CR>' },
-		{ "n", "<leader>dn", ':lua require("dap-python").test_method()<CR>' },
-		{ "n", "<leader>ds", ':lua require("dap-python").debug_selection()<CR>' },
 	}
 	M.maps(maps, opts)
 end

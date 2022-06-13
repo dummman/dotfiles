@@ -28,16 +28,15 @@ require("paq")({
 	"terrortylor/nvim-comment",
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	-- "CRAG666/code_runner.nvim";
-	"michaelb/sniprun",
 	"nvim-telescope/telescope.nvim",
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	-- "nvim-telescope/telescope-project.nvim";
 	"cljoly/telescope-repo.nvim",
 	-- "ahmedkhalf/project.nvim";
-	"mfussenegger/nvim-dap",
-	"mfussenegger/nvim-dap-python",
-	"rcarriga/nvim-dap-ui",
-	"nvim-telescope/telescope-dap.nvim",
+	-- "mfussenegger/nvim-dap",
+	-- "mfussenegger/nvim-dap-python",
+	-- "rcarriga/nvim-dap-ui",
+	-- "nvim-telescope/telescope-dap.nvim",
 	"honza/vim-snippets",
 	"dcampos/nvim-snippy",
 	"dcampos/cmp-snippy",
@@ -55,13 +54,7 @@ require("paq")({
 	"max397574/better-escape.nvim",
 	"folke/trouble.nvim",
 	"simrat39/rust-tools.nvim",
-	-- "bfredl/nvim-miniyank";
 	"folke/todo-comments.nvim",
-	-- "rmagatti/auto-session";
-	-- "rmagatti/session-lens";
-	"Shatur/neovim-session-manager",
-	-- "svermeulen/vimpeccable";
-	-- "famiu/nvim-reload";
 	"mickael-menu/zk-nvim",
 
 	-- vimscript
@@ -74,6 +67,7 @@ require("paq")({
 	"tpope/vim-fugitive",
 
 	-- Visuals
+    "VonHeikemen/little-wonder",
 	"folke/tokyonight.nvim",
 	"NLKNguyen/papercolor-theme",
 	"kyazdani42/nvim-web-devicons",
@@ -144,7 +138,7 @@ require("refactoring").setup({})
 -- require('session-lens').setup {
 --     path_display={'shorten'},
 -- }
-require("session_manager").setup({})
+-- require("session_manager").setup({})
 require("zk").setup({})
 
 -- local vimp = require('vimp')
@@ -163,7 +157,7 @@ require("zk").setup({})
 --     print("Reloaded vimrc!")
 -- end)
 
-require("config.dap")
+-- require("config.dap")
 require("config.git")
 require("config.telescope")
 
