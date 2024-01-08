@@ -84,12 +84,12 @@ plugins=(
 	brew
 	colored-man-pages 
 	cp 
-	fzf
+#	fzf
     gh
 	git 
-    npm
+#    npm
 	pip
-    poetry
+#    poetry
 	python 
 	themes 
 	tmux 
@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim'
+  export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -126,10 +126,10 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
-alias tcfg="nvim ~/.tmux.conf"
-alias vimrc="nvim ~/.config/nvim/init.lua"
-alias zshcfg="nvim ~/.zshrc"
+#alias vim="nvim"
+alias tcfg="$EDITOR ~/.tmux.conf"
+alias vimrc="$EDITOR ~/.config/nvim/init.lua"
+alias zshcfg="$EDITOR ~/.zshrc"
 
 # export CLICOLOR=1
 # export t_Co=256
