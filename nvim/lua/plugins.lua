@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
 
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -70,7 +70,13 @@ return require('packer').startup(function(use)
     }
 
     use("folke/zen-mode.nvim")
-    use("github/copilot.vim")
+    --    use("github/copilot.vim")
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
     use("eandrju/cellular-automaton.nvim")
     use("laytan/cloak.nvim")
     use("nvim-tree/nvim-web-devicons")
